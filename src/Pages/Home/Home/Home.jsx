@@ -1,10 +1,11 @@
 import { Helmet } from "react-helmet";
+import Banner from "../Banner/Banner";
 
 const Home = () => {
     return (
         <div>
         <Helmet>Go-Lingo | Home</Helmet>
-        <h2>Welcome Home</h2>            
+        <Banner></Banner>
         </div>
     );
 };
