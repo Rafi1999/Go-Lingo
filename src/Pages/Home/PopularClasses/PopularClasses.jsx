@@ -28,8 +28,8 @@ const PopularClasses = () => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
     return (
-        <div>
-        <h2 className='text-center text-3xl'>Popular Classes</h2>
+        <div className='my-5'>
+        <h2 className='text-center text-3xl uppercase border-y-4 py-4 text-yellow-400'>Popular Classes</h2>
              <Swiper
           spaceBetween={30}
           centeredSlides={true}

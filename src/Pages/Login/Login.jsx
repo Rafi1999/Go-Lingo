@@ -1,14 +1,19 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from  = location.state?.from?.pathname || "/";
     const handlePassword = (e) => {
-        e.preventDefault;
+        e.preventDefault();
         const passwordInput = e.target.value;
         setPassword(passwordInput);
         if (passwordInput.length < 6) {
@@ -29,7 +34,7 @@ const Login = () => {
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="card-body">
                         <h1 className="text-4xl font-bold text-center">Login now!</h1>
-                        <form onSubmit>
+                        <form  onSubmit={handleLogin}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
