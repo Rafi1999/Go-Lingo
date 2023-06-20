@@ -5,8 +5,8 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const [error, setError] = useState("")
-    const [success, setSuccess] = useState("")
+//    const [error, setError] = useState("")
+//    const [success, setSuccess] = useState("")
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const { signIn } = useContext(AuthContext);

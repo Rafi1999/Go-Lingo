@@ -11,8 +11,7 @@ import './styles.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper';
-
-const PopularClasses = () => {
+const PopularInstructor = () => {
     const [classes, setClasses] = useState([]);
   useEffect(() => {
     fetch('classes.json')
@@ -29,7 +28,7 @@ const PopularClasses = () => {
     };
     return (
         <div className='my-5'>
-        <h2 className='text-center text-3xl uppercase border-y-4 py-4 text-yellow-400'>Popular Classes</h2>
+        <h2 className='text-center text-3xl uppercase border-y-4 py-4 text-yellow-400'>Popular Instructors</h2>
              <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -64,12 +63,4 @@ const PopularClasses = () => {
     );
 };
 
-export default PopularClasses;
-
-{/* classes.map(each => (
-          <SwiperSlide key={each.name}>
-            <img className="swiper-image" src={each.picture} alt={each.name} />
-          </SwiperSlide>
-        ))}
-        
-   */}
+export default PopularInstructor;

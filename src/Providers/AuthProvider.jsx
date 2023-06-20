@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
-import axios from "axios";
+//import axios from "axios";
 import { app } from "../Firebase/Firebase.config";
 
 export const AuthContext = createContext(null);
@@ -21,10 +21,18 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const googleSignIn = () => {
-        setLoading(true);
-        return signInWithPopup(auth, googleProvider);
-    }
+    const googleSignIn =(navigate,from)=>{
+        signInWithPopup(auth, googleProvider)
+  .then((result) => {
+    setUser(result.user);
+    navigate(from, { replace: true });
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorMessage = error.message;
+    console.log(errorMessage);
+  });}
 
     const logOut = () => {
         setLoading(true);

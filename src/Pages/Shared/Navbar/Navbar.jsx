@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaLanguage } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import ViewMode from "../ViewMode/ViewMode";
 const Navbar = () => {
     const {user,logOut} = useContext(AuthContext);
     const handleLogOut = () =>{
@@ -13,8 +14,9 @@ const Navbar = () => {
     }
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/menu">Instructors</Link></li>
-        <li><Link to="/order/salad">Classes</Link></li>
+        <li><Link to="/instructors">Instructors</Link></li>
+        <li><Link to="/classes">Classes</Link></li>
+        <li><Link to="/dashboard/dashHome">Dashboard</Link></li>
         {/* {
             isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> : 
             <li><Link to="/dashboard/userhome">Dashboard</Link></li>
@@ -55,7 +57,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                { user ? <Link onClick={handleLogOut} className="btn">LogOut</Link> : <Link to='login' className="btn">Login</Link>}
+                { user ? <>
+                <img title={user.displayName} className="w-12 h-12 rounded-full mr-2" src={user.photoURL}></img>
+                <Link onClick={handleLogOut} className="btn mr-4">LogOut</Link></> : <Link to='login' className="btn  mr-5">Login</Link>}
+                <ViewMode></ViewMode>
             </div>
         </div>
     </>
