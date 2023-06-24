@@ -3,8 +3,10 @@ import { FaLanguage, FaShoppingCart } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import ViewMode from "../ViewMode/ViewMode";
+import useSelect from "../../../hooks/useSelect";
 const Navbar = () => {
     const {user,logOut} = useContext(AuthContext);
+    const [ selected ] = useSelect();
     const handleLogOut = () =>{
         logOut()
         .then(()=>{
@@ -21,7 +23,7 @@ const Navbar = () => {
             <Link to='/'>
             <button className="btn gap-2 ">
   <FaShoppingCart></FaShoppingCart>
-  <div className="badge badge-secondary">+0</div>
+  <div className="badge badge-secondary">+{selected?.length || 0}</div>
 </button>
             </Link>
         </li>
@@ -47,7 +49,7 @@ const Navbar = () => {
     </div>
     return (
         <>
-        <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
+        <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white h-20">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
