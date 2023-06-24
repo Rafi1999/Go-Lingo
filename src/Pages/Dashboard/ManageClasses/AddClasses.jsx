@@ -41,7 +41,7 @@ const AddClass = () => {
       <SectionTitle title="Add Class " />
       <div className="">
         <Link
-          to="/dashboard/manage_classes"
+          to="/dashboard/manageClasses"
           className="btn btn-sm bg-secondary text-[#fff]"
         >
           {" "}

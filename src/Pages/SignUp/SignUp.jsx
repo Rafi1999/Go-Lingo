@@ -58,7 +58,9 @@ const SignUp = () => {
     };  
     return (
         <>
-        <Helmet>Go-Lingo | SignUp</Helmet>
+        <Helmet>
+                <title>Go-Lingo | Sign-Up</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
   <div className="hero-content flex-col lg:flex-row">
     <div className="mr-14 w-1/2">

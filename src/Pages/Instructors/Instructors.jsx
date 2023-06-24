@@ -1,4 +1,4 @@
-import React from 'react';
+import { Helmet } from "react-helmet";
 
 const Instructors = () => {
     const instructorz = [
@@ -15,8 +15,12 @@ const Instructors = () => {
     ];
 
     return (
+        <>
+            <Helmet>
+                <title>Go-Lingo | Instructors</title>
+            </Helmet>
         <div>
-            <h2 className='pt-24 text-center text-3xl uppercase py-4'>Instructors</h2>
+            <h2 className='pt-32 text-center text-3xl uppercase py-4'>Instructors</h2>
             <div className='grid grid-cols-3 justify-center items-center gap-5 my-5'>
             {
                 instructorz.map((ins, index) => (
@@ -29,6 +33,7 @@ const Instructors = () => {
             }
             </div>
         </div>
+        </>
     );
 };
 

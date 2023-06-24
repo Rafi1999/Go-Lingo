@@ -1,9 +1,14 @@
-import React from 'react';
+
+import { Helmet } from 'react-helmet';
 import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-        <div className="drawer lg:drawer-open">
+      <>
+      <Helmet>
+        <title>Go-Lingo | Dashboard</title>
+      </Helmet>
+                <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content flex flex-col items-center justify-center">
     {/* Page content here */}
@@ -24,6 +29,7 @@ const Dashboard = () => {
   
   </div>
 </div>
+      </>
     );
 };
 

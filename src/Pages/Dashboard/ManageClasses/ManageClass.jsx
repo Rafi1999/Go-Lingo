@@ -1,7 +1,8 @@
 import React from 'react';
 
-const ManageClass =({classitem}) => {
-    const {name} = classitem;
+const ManageClass =({Class}) => {
+    console.log(Class);
+    const {name,picture} = Class;
     console.log("enter");
     // console.log(index);
     return (
@@ -9,10 +10,10 @@ const ManageClass =({classitem}) => {
         <td>
         </td>
         <td>
-            {name}
+            <img src={picture} alt=""  className='rounded-full w-14 h-12'/>
         </td>
         <td>
-            <img src={image} alt=""  className='rounded-full ww-12 h-12'/>
+            {name}
         </td>
         </tr>
     );

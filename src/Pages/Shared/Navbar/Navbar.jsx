@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaLanguage } from 'react-icons/fa';
+import { FaLanguage, FaShoppingCart } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import ViewMode from "../ViewMode/ViewMode";
@@ -12,11 +12,19 @@ const Navbar = () => {
         })
         .catch(err=>{console.log(err);})
     }
-    const navOptions = <>
+    const navOptions = <div className="flex items-center">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
         <li><Link to="/dashboard/dashHome">Dashboard</Link></li>
+        <li>
+            <Link to='/'>
+            <button className="btn gap-2 ">
+  <FaShoppingCart></FaShoppingCart>
+  <div className="badge badge-secondary">+0</div>
+</button>
+            </Link>
+        </li>
         {/* {
             isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> : 
             <li><Link to="/dashboard/userhome">Dashboard</Link></li>
@@ -36,7 +44,7 @@ const Navbar = () => {
                 <li><Link to="/login">Login</Link></li>
             </>
         } */}
-    </>
+    </div>
     return (
         <>
         <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-xl bg-black text-white">
