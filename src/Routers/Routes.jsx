@@ -38,7 +38,7 @@ import PrivateRoutes from "./PrivateRoutes";
           },
           {
             path: 'classes',
-            element: <PrivateRoutes><Classes></Classes></PrivateRoutes>
+            element: <Classes></Classes>
           },
       ]
     },
