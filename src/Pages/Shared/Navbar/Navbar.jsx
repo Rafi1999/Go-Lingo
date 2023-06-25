@@ -18,7 +18,8 @@ const Navbar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructors">Instructors</Link></li>
         <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/dashboard/dashHome">Dashboard</Link></li>
+        { user ? <li><Link to="/dashboard/dashHome">Dashboard</Link></li> : ''}
+        
         <li>
             <Link to='/'>
             <button className="btn gap-2 ">

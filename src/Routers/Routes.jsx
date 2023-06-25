@@ -13,6 +13,9 @@ import DashHome from "../Pages/Dashboard/DashHome/DashHome";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AddClasses from "../Pages/Dashboard/ManageClasses/AddClasses";
 import PrivateRoutes from "./PrivateRoutes";
+import MySelectedClass from "../Pages/Dashboard/MyClass/MySelectedClass";
+import MyEnrolledClass from "../Pages/Dashboard/MyClass/MyEnrolledClass";
+import PaymentHistory from "../Pages/Dashboard/MyClass/PaymentHistory";
 
 
   export const router = createBrowserRouter([
@@ -51,6 +54,14 @@ import PrivateRoutes from "./PrivateRoutes";
                 element : <DashHome></DashHome>
         },
         {
+            path : 'mySelectedClass',
+            element : <MySelectedClass></MySelectedClass>
+        },
+        {
+            path : 'myEnrolledClass',
+            element : <MyEnrolledClass></MyEnrolledClass>
+        },
+        {
             path : 'manageClasses',
             element : <ManageClasses></ManageClasses>
         },
@@ -61,6 +72,10 @@ import PrivateRoutes from "./PrivateRoutes";
         {
           path : 'addClass',
           element : <AddClasses></AddClasses>
+        },
+        {
+          path : 'payHistory',
+          element : <PaymentHistory></PaymentHistory>
         }
       ]
       // children : [

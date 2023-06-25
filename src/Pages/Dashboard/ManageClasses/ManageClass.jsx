@@ -1,6 +1,6 @@
-import React from 'react';
 
-const ManageClass =({Class}) => {
+
+const ManageClass =({Class,index}) => {
     console.log(Class);
     const {name,picture} = Class;
     console.log("enter");
@@ -8,6 +8,7 @@ const ManageClass =({Class}) => {
     return (
         <tr className='w-full'>
         <td>
+        {index+1}
         </td>
         <td>
             <img src={picture} alt=""  className='rounded-full w-14 h-12'/>
