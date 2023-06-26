@@ -2,8 +2,10 @@ import { Helmet } from 'react-helmet';
 import { FaBookReader, FaHistory, FaHome, FaUserCircle } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import useSelect from '../hooks/useSelect';
 
 const Dashboard = () => {
+  const [selected] = useSelect();
   return (
     <>
       <Helmet>
@@ -32,10 +34,12 @@ const Dashboard = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <Link to="/dashboard/mySelectedClass">
+              <Link className='flex' to="/dashboard/mySelectedClass">
                 <FaBookReader />
                 My Selected Class
+              <span className="badge badge-secondary">+{selected?.length || 0}</span>
               </Link>
+              
             </motion.li>
             <motion.li
               initial={{ opacity: 0, y: -20 }}
