@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 import { useForm } from "react-hook-form";
@@ -9,8 +9,8 @@ import { Helmet } from "react-helmet";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  //const location = useLocation();
+  //const from = location.state?.from?.pathname || '/';
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = data => {
@@ -21,7 +21,7 @@ const SignUp = () => {
         console.log(loggedUser);
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            const saveUser = {name : data.name, email : data.email}
+            const saveUser = {name : data.name, email : data.email, picture : data.photoURL}
             fetch('http://localhost:5000/users',{
               method : 'POST',
               headers : {

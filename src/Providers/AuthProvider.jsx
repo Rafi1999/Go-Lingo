@@ -21,18 +21,10 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const googleSignIn =(navigate,from)=>{
-        signInWithPopup(auth, googleProvider)
-  .then((result) => {
-    setUser(result.user);
-    navigate(from, { replace: true });
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorMessage = error.message;
-    console.log(errorMessage);
-  });}
+    const googleSignIn =()=>{
+        setLoading(true);
+        return signInWithPopup(auth,googleProvider);
+    }
 
     const logOut = () => {
         setLoading(true);

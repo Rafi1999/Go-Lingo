@@ -6,7 +6,7 @@ import useClass from "../../../hooks/useClass";
 
 
 const ManageClasses = () => {
-  const [classes, loading, refetch] = useClass();
+  const [classes, refetch] = useClass();
   return (
     <div className="p-5 ">
       <SectionTitle title="Manage Classes" />

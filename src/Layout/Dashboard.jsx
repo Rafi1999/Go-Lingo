@@ -1,11 +1,12 @@
 import { Helmet } from 'react-helmet';
-import { FaBookReader, FaHistory, FaHome, FaUserCircle } from 'react-icons/fa';
+import { FaBook, FaBookReader, FaHistory, FaHome, FaUserCircle } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import useSelect from '../hooks/useSelect';
 
 const Dashboard = () => {
   const [selected] = useSelect();
+  const isAdmin = true;
   return (
     <>
       <Helmet>
@@ -28,7 +29,30 @@ const Dashboard = () => {
         <div className="drawer-side bg-amber-400">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 h-full text-base-content font-medium">
-            {/* Sidebar content here */}
+          {
+            isAdmin ? <>
+            <motion.li
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Link className='flex' to="/dashboard/manageClasses">
+                <FaBook />
+                Manage Class
+              </Link>
+              
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Link to="/dashboard/manageUsers">
+                <FaUserCircle />
+                Manage User
+              </Link>
+            </motion.li>
+            </> : <>
             <motion.li
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -51,6 +75,20 @@ const Dashboard = () => {
                 My Enrolled Class
               </Link>
             </motion.li>
+            <motion.li
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Link to="/dashboard/payHistory">
+                <FaHistory></FaHistory>
+                Payment History
+              </Link>
+            </motion.li>
+            </>
+          }
+            {/* Sidebar content here */}
+
             <div className="divider"></div>
             <motion.li
               initial={{ opacity: 0, y: -20 }}
@@ -62,16 +100,7 @@ const Dashboard = () => {
                 Home
               </Link>
             </motion.li>
-            <motion.li
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Link to="/dashboard/payHistory">
-                <FaHistory></FaHistory>
-                Payment History
-              </Link>
-            </motion.li>
+
           </ul>
         </div>
       </motion.div>
