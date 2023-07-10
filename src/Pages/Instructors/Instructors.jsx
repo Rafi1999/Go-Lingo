@@ -1,38 +1,37 @@
+
 import { Helmet } from "react-helmet";
+import useUsers from "../../hooks/useUsers";
 
 const Instructors = () => {
-    const instructorz = [
-        {
-          name: "John Smith",
-          email: "john.smith@example.com",
-          image: "https://www.usnews.com/object/image/00000142-9263-d33c-abc6-ff77dfba0024/37985FE_DA_20130207_onlinemistakes-slide8.jpg?update-time=1421878595148&size=responsive640"
-        },
-        {
-          name: "Jane Doe",
-          email: "jane.doe@example.com",
-          image: "https://t3.ftcdn.net/jpg/02/65/18/30/360_F_265183061_NkulfPZgRxbNg3rvYSNGGwi0iD7qbmOp.jpg"
-        }
-    ];
+    const [users] = useUsers();
+
+    // Filter only the instructors from the users array
+    const instructors = users.filter(user => user.role === "instructor");
 
     return (
         <>
             <Helmet>
                 <title>Go-Lingo | Instructors</title>
             </Helmet>
-        <div>
-            <h2 className='pt-32 text-center text-3xl uppercase py-4'>Instructors</h2>
-            <div className='grid grid-cols-3 justify-center items-center gap-5 my-5'>
-            {
-                instructorz.map((ins, index) => (
-                    <div key={index}>
-                        <h2>{ins.name}</h2>
-                        <h2>{ins.email}</h2>
-                        <img src={ins.image} alt={ins.name} className='w-52 h-40' />
-                    </div>
-                ))
-            }
+            <div>
+                <h2 className='pt-32 text-center text-3xl uppercase py-4'>Instructors</h2>
+                <div className='grid grid-cols-3 justify-center items-center gap-5 my-5'>
+                    {
+                        instructors.map((ins, index) => (
+                            <div key={index} className="card w-96 h-80 bg-slate-200 shadow-xl mb-12">
+  <figure className="px-10 pt-10">
+    <img src={ins.picture} className="rounded-xl w-56 h-48 object-cover" />
+  </figure>
+  <div className="card-body items-center text-center">
+    <h2 className="card-title">Name : {ins.name}</h2>
+    <p>Email : {ins.email}</p>
+    
+  </div>
+</div>
+                        ))
+                    }
+                </div>
             </div>
-        </div>
         </>
     );
 };

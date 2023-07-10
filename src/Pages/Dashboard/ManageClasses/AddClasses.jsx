@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useInstructor from "../../../hooks/useInstructor";
 
 const AddClass = () => {
   const {
@@ -11,7 +12,7 @@ const AddClass = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const [isInstructor] = useInstructor();
   const add_class_url = "http://localhost:5000/add_class";
 
   const onSubmit = (data) => {
@@ -38,8 +39,9 @@ const AddClass = () => {
 
   return (
     <div className="px-5">
-      <SectionTitle title="Add Class " />
-      <div className="">
+      <SectionTitle title="Add Class" />
+      {
+        isInstructor ? '' :       <div className="">
         <Link
           to="/dashboard/manageClasses"
           className="btn btn-sm bg-secondary text-[#fff]"
@@ -48,8 +50,9 @@ const AddClass = () => {
           <FaArrowLeft />{" "}
         </Link>
       </div>
-      <div className="max-w-md mx-auto h-auto flex flex-col justify-center py-20">
-        <form className="shadow-md p-8" onSubmit={handleSubmit(onSubmit)}>
+      }
+      <div className="max-w-md mx-auto h-auto flex flex-col justify-center py-5 bg-slate-100">
+        <form className="shadow-md p-9" onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label htmlFor="className" className="text-sm font-medium">
               Class Name

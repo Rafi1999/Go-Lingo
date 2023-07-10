@@ -1,12 +1,16 @@
 import { Helmet } from 'react-helmet';
-import { FaBook, FaBookReader, FaHistory, FaHome, FaUserCircle } from 'react-icons/fa';
+import { FaBook, FaBookReader, FaHistory, FaHome, FaPlus, FaPlusCircle, FaUserCircle } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import useSelect from '../hooks/useSelect';
+import useAdmin from '../hooks/useAdmin';
+import useInstructor from '../hooks/useInstructor';
 
 const Dashboard = () => {
   const [selected] = useSelect();
-  const isAdmin = true;
+  //const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   return (
     <>
       <Helmet>
@@ -52,7 +56,31 @@ const Dashboard = () => {
                 Manage User
               </Link>
             </motion.li>
-            </> : <>
+            </> : 
+            isInstructor ? <>
+            <motion.li
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <Link className='flex' to="/dashboard/addClass">
+                <FaPlusCircle />
+                Add Class
+              </Link>
+              
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Link to="/dashboard/myEnrolledClass">
+                <FaUserCircle />
+                My Class
+              </Link>
+            </motion.li>
+            </>:
+            <>
             <motion.li
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
