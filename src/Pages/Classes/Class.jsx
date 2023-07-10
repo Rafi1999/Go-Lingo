@@ -3,17 +3,24 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useSelect from "../../hooks/useSelect";
+//import useUsers from "../../hooks/useUsers";
+import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const Class = ({ classItem }) => {
-  const {name,picture,price, _id} = classItem;
+  const { name, picture, price, _id } = classItem;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [,refetch] = useSelect();
+  const [, refetch] = useSelect();
+  const [isAdmin] = useAdmin();
+
+  //const [users] = useUsers();
+  const [isInstructor] = useInstructor();
   const handleAdd = classItem => {
     console.log(classItem);
     if (user && user.email) {
-      const selectedClass = { selectedId: _id, name,picture,price, email : user.email}
+      const selectedClass = { selectedId: _id, name, picture, price, email: user.email }
       fetch('http://localhost:5000/selected', {
         method: 'POST',
         headers: {
@@ -64,7 +71,7 @@ const Class = ({ classItem }) => {
           <p>Price : ${classItem.price}</p>
         </div>
         <div className="card-actions justify-end">
-          <button onClick={() => handleAdd(classItem)} className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400">Select</button>
+          <button disabled={isAdmin || isInstructor || classItem.availableSeats==0} onClick={() => handleAdd(classItem)} className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400">Select</button>
         </div>
       </div>
     </div>

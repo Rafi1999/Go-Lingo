@@ -1,12 +1,20 @@
 
 import { Helmet } from "react-helmet";
-import useUsers from "../../hooks/useUsers";
+//import useUsers from "../../hooks/useUsers";
+import { useEffect, useState } from "react";
 
 const Instructors = () => {
-    const [users] = useUsers();
+    
+    const [instructors, setInstructors] = useState([]);
+    useEffect(()=> {
+      fetch('http://localhost:5000/users/ins')
+      .then(res => res.json())
+      .then(info => setInstructors(info));
+    }, []);
+    //const [users] = useUsers();
 
     // Filter only the instructors from the users array
-    const instructors = users.filter(user => user.role === "instructor");
+    // const instructors = users.filter(user => user.role === "instructor");
 
     return (
         <>

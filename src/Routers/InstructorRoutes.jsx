@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
-import useAdmin from "../hooks/useAdmin";
-const AdminRoutes = ({children}) => {
+import useInstructor from "../hooks/useInstructor";
+const InstructorRoutes = ({children}) => {
     const {user,loading} = useContext(AuthContext);
-    const [isAdmin,isAdminLoading] = useAdmin();
+    const [isInstructor,isInstructorLoading] = useInstructor();
     console.log(loading);
     const location = useLocation();
     console.log(location);
-    if(loading || isAdminLoading){
+    if(loading || isInstructorLoading){
         return <div className="text-center">
         <div role="status">
             <svg aria-hidden="true" className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,10 +19,10 @@ const AdminRoutes = ({children}) => {
         </div>
     </div>
     }
-    if(user && isAdmin){
+    if(user && isInstructor){
         return children
     }
     return <Navigate to='/' state={{from :location}} replace></Navigate>
 };
 
-export default AdminRoutes;
+export default InstructorRoutes;

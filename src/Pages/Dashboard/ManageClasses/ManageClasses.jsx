@@ -1,7 +1,7 @@
-import React from "react";
+
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import ManageClass from "./ManageClass";
-import { Link } from "react-router-dom";
+
 import useClass from "../../../hooks/useClass";
 
 
@@ -10,9 +10,7 @@ const ManageClasses = () => {
   return (
     <div className="p-5 ">
       <SectionTitle title="Manage Classes" />
-      <div className="p-5">
-        <Link to="/dashboard/addClass" className="btn btn-sm bg-secondary text-[#fff]">Add CLass + </Link>
-      </div>
+      
       <div className="overflow-x-auto ">
         <table className="table w-full">
           {/* head */}
