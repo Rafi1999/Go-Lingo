@@ -1,55 +1,62 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useInstructor from "../../../hooks/useInstructor";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const AddClass = () => {
+  const {user} = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const [isInstructor] = useInstructor();
-  const add_class_url = "http://localhost:5000/add_class";
+  const add_class_url = "http://localhost:5000/class";
 
   const onSubmit = (data) => {
     data.status = "pending";
+    data.feedBack = 'Awaiting admin review';
     console.log(data);
-    
+
     axios.post(add_class_url, data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         const data = response.data;
         if (data.insertedId) {
-          Swal.fire("Good job!", "You clicked the button!", "success");
-          // form.reset();
+          Swal.fire("Created!", "A new class is added!", "success");
+          navigate('/dashboard/addClass')
+          reset();
         }
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-    
+
   };
 
   return (
     <div className="px-5">
       <SectionTitle title="Add Class" />
       {
-        isInstructor ? '' :       <div className="">
-        <Link
-          to="/dashboard/manageClasses"
-          className="btn btn-sm bg-secondary text-[#fff]"
-        >
-          {" "}
-          <FaArrowLeft />{" "}
-        </Link>
-      </div>
+        isInstructor ? '' : <div className="">
+          <Link
+            to="/dashboard/manageClasses"
+            className="btn btn-sm bg-secondary text-[#fff]"
+          >
+            {" "}
+            <FaArrowLeft />{" "}
+          </Link>
+        </div>
       }
       <div className="max-w-md mx-auto h-auto flex flex-col justify-center py-5 bg-slate-100">
         <form className="shadow-md p-9" onSubmit={handleSubmit(onSubmit)}>
@@ -74,6 +81,7 @@ const AddClass = () => {
             </label>
             <input
               type="text"
+              value={user?.displayName}
               id="instructorName"
               className="w-full px-3 py-2 border rounded"
               {...register("instructorName", { required: true })}
@@ -90,6 +98,7 @@ const AddClass = () => {
             <input
               type="email"
               id="instructorEmail"
+              value={user?.email}
               className="w-full px-3 py-2 border rounded"
               {...register("instructorEmail", { required: true })}
             />
@@ -136,7 +145,7 @@ const AddClass = () => {
               type="text"
               id="image"
               className="w-full px-3 py-2 border rounded"
-              {...register("image")}
+              {...register("picture")}
             />
           </div>
 

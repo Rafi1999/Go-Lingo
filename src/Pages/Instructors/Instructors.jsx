@@ -28,7 +28,7 @@ const Instructors = () => {
                         instructors.map((ins, index) => (
                             <div key={index} className="card w-96 h-80 bg-slate-200 shadow-xl mb-12">
   <figure className="px-10 pt-10">
-    <img src={ins.picture} className="rounded-xl w-56 h-48 object-cover" />
+    <img src={ins.picture} className="rounded-lg w-48 h-60 mt-5 object-cover" />
   </figure>
   <div className="card-body items-center text-center">
     <h2 className="card-title">Name : {ins.name}</h2>

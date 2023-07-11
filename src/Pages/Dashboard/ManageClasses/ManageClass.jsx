@@ -1,9 +1,7 @@
 
 
-const ManageClass =({Class,index}) => {
-    console.log(Class);
-    const {name,picture} = Class;
-    console.log("enter");
+const ManageClass =({Class,index}) => {    
+    const {name,picture,instructorName,instructorEmail,available_seats,price,status} = Class;
     // console.log(index);
     return (
         <tr className='w-full'>
@@ -15,6 +13,21 @@ const ManageClass =({Class,index}) => {
         </td>
         <td>
             {name}
+        </td>
+        <td>
+            {instructorName}
+        </td>
+        <td>
+            {instructorEmail}
+        </td>
+        <td>
+            {available_seats}
+        </td>
+        <td>
+            {price}
+        </td>
+        <td>
+            {status}
         </td>
         </tr>
     );

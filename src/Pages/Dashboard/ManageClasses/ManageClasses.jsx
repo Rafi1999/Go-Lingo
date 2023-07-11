@@ -2,11 +2,11 @@
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import ManageClass from "./ManageClass";
 
-import useClass from "../../../hooks/useClass";
+import useAdminClass from "../../../hooks/useAdminClass";
 
 
 const ManageClasses = () => {
-  const [classes, refetch] = useClass();
+  const [classes, refetch] = useAdminClass();
   return (
     <div className="p-5 ">
       <SectionTitle title="Manage Classes" />

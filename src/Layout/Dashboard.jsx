@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { FaBook, FaBookReader, FaHistory, FaHome, FaPlus, FaPlusCircle, FaUserCircle } from 'react-icons/fa';
+import { FaBook, FaBookReader, FaHistory, FaHome, FaPlusCircle, FaUserCircle } from 'react-icons/fa';
 import { Link, Outlet } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import useSelect from '../hooks/useSelect';
@@ -74,7 +74,7 @@ const Dashboard = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Link to="/dashboard/myEnrolledClass">
+              <Link to="/dashboard/instructorClass">
                 <FaUserCircle />
                 My Class
               </Link>
