@@ -22,7 +22,7 @@ const AddClass = () => {
 
   const onSubmit = (data) => {
     data.status = "pending";
-    data.feedBack = 'Awaiting admin review';
+    data.feedback = 'Awaiting admin review';
     console.log(data);
 
     axios.post(add_class_url, data, {

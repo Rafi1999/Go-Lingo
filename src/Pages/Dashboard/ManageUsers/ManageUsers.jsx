@@ -9,7 +9,7 @@ import { FaChalkboardTeacher, FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const ManageUsers = () => {
-  const [users, isLoading, refetch] = useUsers();
+  const [users, , refetch] = useUsers();
   const handleDelete = (user) => {
     Swal.fire({
       title: 'Are you sure?',

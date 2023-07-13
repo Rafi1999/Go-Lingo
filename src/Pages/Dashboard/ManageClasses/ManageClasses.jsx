@@ -6,7 +6,7 @@ import useAdminClass from "../../../hooks/useAdminClass";
 
 
 const ManageClasses = () => {
-  const [classes, refetch] = useAdminClass();
+  const [classes, ,refetch] = useAdminClass();
   return (
     <div className="p-5 ">
       <SectionTitle title="Manage Classes" />
@@ -28,7 +28,7 @@ const ManageClasses = () => {
           </thead>
           <tbody className="w-full">
             {
-              classes.map((Class, index) => <ManageClass refetch={refetch} Class={Class} index={index} key={index} />)
+              classes.map((Class, index) => <ManageClass Class={Class} index={index} key={index} refetch={refetch}/>)
             }
             
           </tbody>
