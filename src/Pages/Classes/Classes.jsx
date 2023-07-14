@@ -1,9 +1,16 @@
 import { Helmet } from 'react-helmet';
-import useClass from '../../hooks/useClass';
 import Class from './Class';
+import { useEffect, useState } from 'react';
 
 const Classes = () => {
-    const [classes] = useClass();
+    const [classes, setClasses] = useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/class/all')
+        .then(res=>res.json())
+        .then(data=>{
+            setClasses(data);
+        });
+    },[])
     return (
         <>
         <Helmet>

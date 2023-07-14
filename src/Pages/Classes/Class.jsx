@@ -6,7 +6,8 @@ import useSelect from "../../hooks/useSelect";
 //import useUsers from "../../hooks/useUsers";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
-
+import axios from "axios";
+import { Link } from 'react-router-dom';
 const Class = ({ classItem }) => {
   const { name, picture, price, _id } = classItem;
   const { user } = useContext(AuthContext);
@@ -21,26 +22,28 @@ const Class = ({ classItem }) => {
     console.log(classItem);
     if (user && user.email) {
       const selectedClass = { selectedId: _id, name, picture, price, email: user.email }
-      fetch('http://localhost:5000/selected', {
-        method: 'POST',
+      axios.post(`http://localhost:5000/selected`, selectedClass, {
         headers: {
           'content-type': 'application/json'
         },
-        body: JSON.stringify(selectedClass)
+        
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data.insertedId) {
-            refetch();
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Class Selected',
-              showConfirmButton: false,
-              timer: 1500
-            })
-          }
-        })
+      .then((response) => {
+        const data = response.data;
+        console.log(data);
+        if (data.insertedId) {
+          refetch(); // refetch cart to update the number of items in the
+          Swal.fire({
+            icon: 'success',
+            title: 'Class Selected',
+            showConfirmButton: false,
+            timer: 1000
+          })
+        }
+      })
+      .catch(error=>{
+        console.log('Error', error);
+      });
     }
     else {
       Swal.fire({
@@ -70,9 +73,11 @@ const Class = ({ classItem }) => {
           <p>Available Seat: {classItem.availableSeats}</p>
           <p>Price : ${classItem.price}</p>
         </div>
-        <div className="card-actions justify-end">
-          <button disabled={isAdmin || isInstructor || classItem.availableSeats==0} onClick={() => handleAdd(classItem)} className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400">Select</button>
-        </div>
+        {
+          user ? <div className="card-actions justify-end">
+          <button disabled={isAdmin || isInstructor || classItem.availableSeats==0} onClick={ () => handleAdd(classItem)} className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400">Select</button>
+        </div>: <Link to='/login' className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400" >Select</Link>
+        }
       </div>
     </div>
   );

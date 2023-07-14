@@ -1,14 +1,15 @@
 import { Helmet } from "react-helmet";
 import useInstructorClass from "../../../hooks/useInstructorClass";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import { FaAmazonPay, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const InstructorClass = () => {
-    const [Classes,refetch] = useInstructorClass();
+    const [Classes] = useInstructorClass();
     return (
         <>
       <Helmet>
-        <title>GoLingo || My Selected Class</title>
+        <title>GoLingo || My Class</title>
       </Helmet>
       <SectionTitle title="Instructor Class" />
       <div className="uppercase flex gap-16 my-5">
@@ -26,7 +27,7 @@ const InstructorClass = () => {
               <th>Enrolled Student</th>
               <th>Status</th>
               <th>Feedback</th>
-              
+              <th>Option</th>
             </tr>
           </thead>
           <tbody className="w-full">
@@ -48,8 +49,9 @@ const InstructorClass = () => {
                   {Class.status}
                 </td>
                 {
-                    Class.status === 'denied' ? <td>{Class.feedback}</td>: ''
+                    Class.status === 'denied' ? <td>{Class.feedback}</td>: <td></td>
                 }
+                <td> <Link to={`/dashboard/instructorUpdate/${Class?._id}`} className="btn btn-xs rounded-lg h-8 w-20 btn-info">Update</Link> </td>
               </tr>)
             }
 
