@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,16 +11,11 @@ import './styles.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import useClass from '../../../hooks/useClass';
 
 const PopularClasses = () => {
-    const [classes, setClasses] = useState([]);
-  useEffect(() => {
-    fetch('classes.json')
-      .then(res => res.json())
-      .then(data => {
-        setClasses(data);
-      });
-  }, []);
+    const [classes] = useClass();
+
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {

@@ -33,6 +33,21 @@ const InstructorUpdate = () => {
     const update_class_url = `http://localhost:5000/class/ins/${InstructorClassID?.id}`;
 
     const onSubmit = (data) => {
+        // Convert availableSeats and price to numbers
+        data.availableSeats = parseInt(data.availableSeats, 10);
+        data.price = parseFloat(data.price);
+
+        //default check
+        const defaultClassName = updated?.name || "";
+        const defaultPicture = updated?.picture || "";
+        const defaultInstructorName = user?.displayName || "";
+        const defaultInstructorEmail = user?.email || "";
+
+        data.name = data.name || defaultClassName;
+        data.picture = data.picture || defaultPicture;
+        data.instructorName = data.instructorName || defaultInstructorName;
+        data.instructorEmail = data.instructorEmail || defaultInstructorEmail;
+
         data.status = "pending";
         data.feedback = "Awaiting admin review";
         axios
@@ -54,6 +69,7 @@ const InstructorUpdate = () => {
                 console.error("Error:", error);
             });
     };
+
 
 
     return (

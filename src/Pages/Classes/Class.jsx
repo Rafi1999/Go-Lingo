@@ -7,9 +7,8 @@ import useSelect from "../../hooks/useSelect";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 const Class = ({ classItem }) => {
-  const { name, picture, price, _id } = classItem;
+  const { name, picture, price, _id,availableSeats} = classItem;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,7 +20,7 @@ const Class = ({ classItem }) => {
   const handleAdd = classItem => {
     console.log(classItem);
     if (user && user.email) {
-      const selectedClass = { selectedId: _id, name, picture, price, email: user.email }
+      const selectedClass = { selectedId: _id, name, picture, price, email: user.email,availableSeats }
       axios.post(`http://localhost:5000/selected`, selectedClass, {
         headers: {
           'content-type': 'application/json'
@@ -55,16 +54,15 @@ const Class = ({ classItem }) => {
         confirmButtonText: 'Login now!'
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire(
-            navigate('/login', { state: { from: location } })
-          )
+          navigate('/login', { state: { from: location } });
         }
-      })
+      });
     }
+    
 
   }
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-2xl my-2">
+    <div className={`card card-compact w-96 bg-base-100 shadow-2xl my-2 ${availableSeats === 0 ? 'bg-red-600':''}`}>
       <figure><img src={classItem.picture} className="h-80" alt="Shoes" /></figure>
       <div className="card-body ">
         <h2 className="card-title ">{classItem.name}</h2>
@@ -73,11 +71,9 @@ const Class = ({ classItem }) => {
           <p>Available Seat: {classItem.availableSeats}</p>
           <p>Price : ${classItem.price}</p>
         </div>
-        {
-          user ? <div className="card-actions justify-end">
+        <div className="card-actions justify-end">
           <button disabled={isAdmin || isInstructor || classItem.availableSeats==0} onClick={ () => handleAdd(classItem)} className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400">Select</button>
-        </div>: <Link to='/login' className="btn btn-outline border-0 btn-block border-t-2 border-b-2 border-t-orange-400 my-2 border-b-orange-400" >Select</Link>
-        }
+        </div>
       </div>
     </div>
   );

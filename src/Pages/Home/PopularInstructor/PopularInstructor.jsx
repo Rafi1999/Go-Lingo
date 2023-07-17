@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import {  useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,15 +11,15 @@ import './styles.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
 const PopularInstructor = () => {
-    const [classes, setClasses] = useState([]);
-  useEffect(() => {
-    fetch('classes.json')
-      .then(res => res.json())
-      .then(data => {
-        setClasses(data);
-      });
+  const [instructors, setInstructors] = useState([]);
+  useEffect(()=> {
+    fetch('http://localhost:5000/users/ins')
+    .then(res => res.json())
+    .then(info => setInstructors(info));
   }, []);
+
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
@@ -44,11 +44,12 @@ const PopularInstructor = () => {
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
         >
-          { classes.map(each => (
+          { instructors.map(each => (
           <SwiperSlide key={each.name}>
             <div className='grid my-4 gap-2'>
             <img className="swiper-image" src={each.picture} alt={each.name} />
             <p className='text-orange-600'>{each.name}</p>
+          <Link to='/instructors' className='btn btn-primary btn-md mx-auto'>See Instructors</Link>
             </div>
           </SwiperSlide>
         ))}

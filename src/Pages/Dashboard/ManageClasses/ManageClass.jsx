@@ -138,7 +138,7 @@ const ManageClass =({Class,index,refetch}) => {
             {availableSeats}
         </td>
         <td>
-            {price}
+            ${price}
         </td>
         <td className="flex gap-2">
             {status === 'approved' ? <><button onClick={() => handleApprove(Class)} className="btn btn-xs w-20 h-9 btn-success" disabled>Approve</button>

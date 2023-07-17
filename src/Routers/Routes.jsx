@@ -20,6 +20,7 @@ import AdminRoutes from "./AdminRoutes";
 import InstructorRoutes from "./InstructorRoutes";
 import InstructorClass from "../Pages/Dashboard/MyClass/InstructorClass";
 import InstructorUpdate from "../Pages/Dashboard/ManageClasses/InstructorUpdate";
+import Payment from "../Pages/Payment/Payment";
 
 
   export const router = createBrowserRouter([
@@ -88,6 +89,10 @@ import InstructorUpdate from "../Pages/Dashboard/ManageClasses/InstructorUpdate"
         {
           path : 'payHistory',
           element : <PaymentHistory></PaymentHistory>
+        },
+        {
+          path : 'payment/:id',
+          element : <Payment></Payment>
         }
       ]
       // children : [

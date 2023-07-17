@@ -3,6 +3,7 @@ import useSelect from "../../../hooks/useSelect";
 //import SelectedClass from "./SelectedClass";
 import Swal from "sweetalert2";
 import { FaAmazonPay, FaTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const MySelectedClass = () => {
   const [selected, refetch] = useSelect();
@@ -73,7 +74,7 @@ const MySelectedClass = () => {
                   ${Class.price}
                 </td>
                 <td>
-                  <button className="text-white  btn btn-accent btn-md  rounded-full"><FaAmazonPay className="text-2xl"></FaAmazonPay></button>
+                <Link to={`/dashboard/payment/${Class?._id}`} className="text-white  btn btn-accent btn-md  rounded-full"><FaAmazonPay className="text-2xl"></FaAmazonPay></Link>
                   <button onClick={() => handleDelete(Class)} className="text-white btn  px-4 btn-error ml-2 btn-md rounded-full text-2xl"><FaTrashAlt></FaTrashAlt></button>
                 </td>
               </tr>)
