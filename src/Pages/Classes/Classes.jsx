@@ -11,6 +11,7 @@ const Classes = () => {
             setClasses(data);
         });
     },[])
+    console.log(classes);
     return (
         <>
         <Helmet>

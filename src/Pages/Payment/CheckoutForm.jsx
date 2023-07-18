@@ -3,6 +3,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
  import useAxiosSecure from "../../hooks/UseAxiosSecure";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useSelect from "../../hooks/useSelect";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({chosen,pick}) => {
   const [,refetch] = useSelect();
@@ -15,6 +17,7 @@ const CheckoutForm = ({chosen,pick}) => {
     const [clientSecret,setClientSecret] = useState('');
     const [cardError,setCardError] = useState('');
     const [TransError,setTransError] = useState('');
+    const navigate = useNavigate();
     const [axiosSecure] = useAxiosSecure();
     useEffect(() => {
         // Check if price is available
@@ -85,6 +88,8 @@ const CheckoutForm = ({chosen,pick}) => {
             .then(res=>{
               console.log(res.data);
               if(res.data.insertResult.insertedId){
+                Swal.fire("Done!", "Enrolled in Class!", "success");
+          navigate('/dashboard/myEnrolledClass')
                 refetch();
               }
             })

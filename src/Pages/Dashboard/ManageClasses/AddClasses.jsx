@@ -21,6 +21,7 @@ const AddClass = () => {
   const add_class_url = "http://localhost:5000/class";
 
   const onSubmit = (data) => {
+    data.instructorPic = user.photoUrl;
     data.status = "pending";
     data.feedback = 'Awaiting admin review';
     console.log(data);

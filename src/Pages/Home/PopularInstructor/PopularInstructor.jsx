@@ -13,11 +13,11 @@ import './styles.css';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link } from 'react-router-dom';
 const PopularInstructor = () => {
-  const [instructors, setInstructors] = useState([]);
+  const [popular, setPopular] = useState([]);
   useEffect(()=> {
-    fetch('http://localhost:5000/users/ins')
+    fetch('http://localhost:5000/popular')
     .then(res => res.json())
-    .then(info => setInstructors(info));
+    .then(info => setPopular(info));
   }, []);
 
     const progressCircle = useRef(null);
@@ -27,8 +27,8 @@ const PopularInstructor = () => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
     return (
-        <div className='my-5'>
-        <h2 className='text-center text-3xl uppercase border-y-4 py-4 text-yellow-400'>Popular Instructors</h2>
+        <div className='mt-10 md:mt-10'>
+        <h2 className='text-center txt-xl md:text-3xl uppercase border-y-4 py-2 md:py-4 text-yellow-400'>Popular Instructors</h2>
              <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -44,11 +44,11 @@ const PopularInstructor = () => {
           onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
         >
-          { instructors.map(each => (
-          <SwiperSlide key={each.name}>
-            <div className='grid my-4 gap-2'>
-            <img className="swiper-image" src={each.picture} alt={each.name} />
-            <p className='text-orange-600'>{each.name}</p>
+          { popular.map(each => (
+          <SwiperSlide key={each._id}>
+            <div className='grid my-4 gap-2 justify-center items-center'>
+            <img className="swiper-image" src={each.instructorPic} alt={each.instructorName} />
+            <p className='text-orange-600'>{each.instructorName}</p>
           <Link to='/instructors' className='btn btn-primary btn-md mx-auto'>See Instructors</Link>
             </div>
           </SwiperSlide>

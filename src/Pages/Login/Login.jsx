@@ -60,10 +60,10 @@ const Login = () => {
             </Helmet>
             <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
-                <div className="mr-14 w-1/2">
+                <div className="md:mr-14 w-1/2">
                     <img src={"https://img.freepik.com/free-vector/sign-concept-illustration_114360-5425.jpg"} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-[300px] shadow-2xl bg-base-100">
                     <div className="card-body">
                         <h1 className="text-4xl font-bold text-center">Login now!</h1>
 
@@ -95,7 +95,7 @@ const Login = () => {
                             </div>
                             {error && <p className="text-red-500 text-center mb-4">{error}</p>} {/* Display the error message */}
                         </form>
-                        <p className="my-4 text-center">
+                        <p className="md:my-4 text-center">
                             New to Toy Car Store? <Link className="text-orange-500 font-semibold" to="/signup">Sign Up</Link>
                         </p>
                         <SocialLogin />

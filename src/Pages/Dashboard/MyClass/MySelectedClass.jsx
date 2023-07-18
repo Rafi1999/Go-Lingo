@@ -28,7 +28,7 @@ const MySelectedClass = () => {
                     refetch();
                     Swal.fire(
                         'Deleted!',
-                        'Your file has been deleted.',
+                        'Class has been removed.',
                         'success'
                       )                      
                 }

@@ -1,9 +1,13 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 
 const DashHome = () => {
+    const { user } = useContext(AuthContext);
     return (
-        <div>
-            <h2>Welcome to Dashboard</h2>
+        <div className="flex flex-col justify-center items-center animate-bounce">
+            <h2 className="mt-5 text-3xl font-medium text-warning">Welcome {user.displayName}</h2>
+            <img className="mt-2 rounded-full w-20 h-20" src={user.photoURL} alt="" />
         </div>
     );
 };

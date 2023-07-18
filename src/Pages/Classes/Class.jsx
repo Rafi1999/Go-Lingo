@@ -8,7 +8,7 @@ import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import axios from "axios";
 const Class = ({ classItem }) => {
-  const { name, picture, price, _id,availableSeats} = classItem;
+  const { name, picture, price, _id,availableSeats,instructorEmail,instructorName,instructorPic} = classItem;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,7 +20,7 @@ const Class = ({ classItem }) => {
   const handleAdd = classItem => {
     console.log(classItem);
     if (user && user.email) {
-      const selectedClass = { selectedId: _id, name, picture, price, email: user.email,availableSeats }
+      const selectedClass = { selectedId: _id, name, picture, price, email: user.email,availableSeats,instructorName,instructorEmail,instructorPic}
       axios.post(`http://localhost:5000/selected`, selectedClass, {
         headers: {
           'content-type': 'application/json'
@@ -62,7 +62,7 @@ const Class = ({ classItem }) => {
 
   }
   return (
-    <div className={`card card-compact w-96 bg-base-100 shadow-2xl my-2 ${availableSeats === 0 ? 'bg-red-600':''}`}>
+    <div className={`card card-compact md:w-96 bg-base-100 shadow-2xl my-2 ${availableSeats === 0 ? 'bg-red-600':''}`}>
       <figure><img src={classItem.picture} className="h-80" alt="Shoes" /></figure>
       <div className="card-body ">
         <h2 className="card-title ">{classItem.name}</h2>

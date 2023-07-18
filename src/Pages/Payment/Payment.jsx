@@ -34,7 +34,7 @@ const Payment = () => {
                 <title>GoLingo || Payment</title>
             </Helmet>
             <SectionTitle title="Payment" />
-            <p>{chosen.price}</p>
+            <p className="md:text-lg mb-2 link-warning">Please Pay : ${chosen.price}</p>
             <Elements stripe={stripePromise}>
                 <CheckoutForm chosen={chosen} pick={paymentClassID}></CheckoutForm>
             </Elements>

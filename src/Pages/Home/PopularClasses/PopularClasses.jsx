@@ -11,11 +11,10 @@ import './styles.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper';
-import useClass from '../../../hooks/useClass';
+import usePopular from '../../../hooks/usePopular';
 
 const PopularClasses = () => {
-    const [classes] = useClass();
-
+    const [classes] = usePopular();
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
@@ -23,8 +22,8 @@ const PopularClasses = () => {
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
     };
     return (
-        <div className='my-5'>
-        <h2 className='text-center text-3xl uppercase border-y-4 py-4 text-yellow-400'>Popular Classes</h2>
+        <div className='mt-10 md:mt-10'>
+        <h2 className='text-center txt-xl md:text-3xl uppercase border-y-4 py-2 md:py-4 text-yellow-400'>Popular Classes</h2>
              <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -41,8 +40,8 @@ const PopularClasses = () => {
           className="mySwiper"
         >
           { classes.map(each => (
-          <SwiperSlide key={each.name}>
-            <div className='grid my-4 gap-2'>
+          <SwiperSlide key={each._id}>
+            <div className='grid md:my-4 gap-2 justify-center items-center'>
             <img className="swiper-image" src={each.picture} alt={each.name} />
             <p className='text-orange-600'>{each.name}</p>
             </div>

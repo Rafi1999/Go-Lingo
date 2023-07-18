@@ -3,10 +3,10 @@ import { FaLanguage } from "react-icons/fa";
 const Footer = () => {
     return (
         <footer>
-            <div className="footer p-10 bg-slate-400 text-black">
+            <div className="footer p-6 md:p-10 bg-slate-400 text-black">
                 <div>
                     <FaLanguage className="text-5xl mb-[-17px]"></FaLanguage>
-                    <p className="text-xl">Go-Lingo Language Learning Hub<br /></p>
+                    <p className="text-lg md:text-xl">Go-Lingo Language Learning Hub<br /></p>
                     <p className="font-medium">Contact Us : Go-lingo@gmail.com</p>
                     <p className="font-medium">Address : Chittagong,Bangladesh</p>
                 </div>
