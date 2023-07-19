@@ -7,7 +7,7 @@ const MyEnrolledClass = () => {
   return (
     <>
       <Helmet>
-        <title>GoLingo || My Enrolled Class</title>
+        <title>Go-Lingo || My Enrolled Class</title>
       </Helmet>
       <div className="uppercase flex gap-16 my-5">
         <h3 className="text-3xl">Total Class : {enrolled.length}</h3>

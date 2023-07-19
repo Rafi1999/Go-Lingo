@@ -3,12 +3,14 @@ import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import ManageClass from "./ManageClass";
 
 import useAdminClass from "../../../hooks/useAdminClass";
+import { Helmet } from "react-helmet";
 
 
 const ManageClasses = () => {
   const [classes, ,refetch] = useAdminClass();
   return (
     <div className="p-5 ">
+    <Helmet><title>Go-Lingo || Manage Class</title></Helmet>
       <SectionTitle title="Manage Classes" />
       
       <div className="overflow-x-auto ">

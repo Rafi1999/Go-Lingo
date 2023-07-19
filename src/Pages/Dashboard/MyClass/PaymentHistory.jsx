@@ -16,7 +16,7 @@ const PaymentHistory = () => {
   return (
     <>
     <Helmet>
-      <title>GoLingo || Payment History</title>
+      <title>Go-Lingo || Payment History</title>
     </Helmet>
     <SectionTitle title="Payment History" />
     <div className="overflow-x-auto ">

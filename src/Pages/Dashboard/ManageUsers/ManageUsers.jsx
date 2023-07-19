@@ -78,7 +78,7 @@ const ManageUsers = () => {
   return (
     <div className="p-5 ">
       <Helmet>
-        <title>Go-Lingo | Manage Users</title>
+        <title>Go-Lingo || Manage Users</title>
       </Helmet>
       <SectionTitle title="Manage Users" />
       <div className="overflow-x-auto ">

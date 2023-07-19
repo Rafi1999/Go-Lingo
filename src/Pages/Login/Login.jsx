@@ -58,12 +58,12 @@ const Login = () => {
             <Helmet>
                 <title>Go-Lingo | LOGIN</title>
             </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
+            <div className="hero justify-center min-h-screen items-center mx-auto w-full bg-base-200">
+            <div className="hero-content items-center flex-col lg:flex-row">
                 <div className="md:mr-14 w-1/2">
                     <img src={"https://img.freepik.com/free-vector/sign-concept-illustration_114360-5425.jpg"} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-[300px] shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 justify-center items-center w-11/12 md:w-[400px] shadow-2xl bg-base-100">
                     <div className="card-body">
                         <h1 className="text-4xl font-bold text-center">Login now!</h1>
 

@@ -9,7 +9,7 @@ const InstructorClass = () => {
     return (
         <>
       <Helmet>
-        <title>GoLingo || My Class</title>
+        <title>Go-Lingo || My Class</title>
       </Helmet>
       <SectionTitle title="Instructor Class" />
       <div className="uppercase flex gap-16 my-5">

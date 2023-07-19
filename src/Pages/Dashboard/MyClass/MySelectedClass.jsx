@@ -40,7 +40,7 @@ const MySelectedClass = () => {
   return (
     <>
       <Helmet>
-        <title>GoLingo || My Selected Class</title>
+        <title>Go-Lingo || My Selected Class</title>
       </Helmet>
       <div className="uppercase flex gap-16 my-5">
         <h3 className="text-3xl">Total Class : {selected.length}</h3>

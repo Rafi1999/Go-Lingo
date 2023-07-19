@@ -8,7 +8,9 @@ import Community from "../Community/Community";
 const Home = () => {
     return (
         <div className="bg-white">
-        <Helmet>Go-Lingo | Home</Helmet>
+        <Helmet>
+        <title>Go-Lingo | Home</title>
+      </Helmet>
         <Banner></Banner>
         <PopularClasses></PopularClasses>
         <PopularInstructor></PopularInstructor>

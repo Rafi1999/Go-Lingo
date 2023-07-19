@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useInstructor from "../../../hooks/useInstructor";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AddClass = () => {
   const {user} = useContext(AuthContext);
@@ -47,6 +48,7 @@ const AddClass = () => {
 
   return (
     <div className="px-5">
+    <Helmet><title>Go-Lingo || Add Class</title></Helmet>
       <SectionTitle title="Add Class" />
       {
         isInstructor ? '' : <div className="">

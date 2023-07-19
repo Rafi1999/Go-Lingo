@@ -31,7 +31,7 @@ const Payment = () => {
     return (
         <>
             <Helmet>
-                <title>GoLingo || Payment</title>
+                <title>Go-Lingo || Payment</title>
             </Helmet>
             <SectionTitle title="Payment" />
             <p className="md:text-lg mb-2 link-warning">Please Pay : ${chosen.price}</p>
