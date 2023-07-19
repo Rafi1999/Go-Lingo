@@ -21,6 +21,7 @@ import InstructorRoutes from "./InstructorRoutes";
 import InstructorClass from "../Pages/Dashboard/MyClass/InstructorClass";
 import InstructorUpdate from "../Pages/Dashboard/ManageClasses/InstructorUpdate";
 import Payment from "../Pages/Payment/Payment";
+import ErrorPage from "../Pages/Shared/ErrorPage/ErrorPage";
 
 
   export const router = createBrowserRouter([
@@ -48,7 +49,8 @@ import Payment from "../Pages/Payment/Payment";
             path: 'classes',
             element: <Classes></Classes>
           },
-      ]
+      ],
+      errorElement: <ErrorPage />,
     },
     {
       path: "dashboard",
@@ -94,28 +96,7 @@ import Payment from "../Pages/Payment/Payment";
           path : 'payment/:id',
           element : <Payment></Payment>
         }
-      ]
-      // children : [
-      //   {
-      //       path : '/',
-      //       element : <Home></Home>
-      //   },
-      //   {
-      //       path: 'login',
-      //       element: <Login></Login>
-      //     },
-      //     {
-      //       path: 'signup',
-      //       element: <SignUp></SignUp>
-      //     },
-      //     {
-      //       path: 'instructors',
-      //       element: <Instructors></Instructors>
-      //     },
-      //     {
-      //       path: 'classes',
-      //       element: <Classes></Classes>
-      //     },
-      // ]
+      ],
+      errorElement: <ErrorPage />,
     }
   ]);

@@ -18,7 +18,7 @@ const MySelectedClass = () => {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`http://localhost:5000/Selected/${Class._id}`,{
+            fetch(`https://golingo-server.vercel.app/Selected/${Class._id}`,{
                 method : 'DELETE'
             })
             .then(res=>res.json())

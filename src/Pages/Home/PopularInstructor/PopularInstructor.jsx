@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 const PopularInstructor = () => {
   const [popular, setPopular] = useState([]);
   useEffect(()=> {
-    fetch('http://localhost:5000/popular')
+    fetch('https://golingo-server.vercel.app/popular')
     .then(res => res.json())
     .then(info => setPopular(info));
   }, []);
@@ -46,8 +46,15 @@ const PopularInstructor = () => {
         >
           { popular.map(each => (
           <SwiperSlide key={each._id}>
-            <div className='grid my-4 gap-2 justify-center items-center'>
-            <img className="swiper-image" src={each.instructorPic} alt={each.instructorName} />
+            <div className='grid my-4 mx-auto gap-2 w-4/5 justify-center items-center '>
+            <img className="swiper-image" src={each.instructorPic} alt={each.instructorName} style={{
+                  width: '500px',
+                  height: '400px',
+                  '@media (max-width: 768px)': { // Apply the style only on small devices (max-width: 768px)
+                    width: '200px',
+                    height: '100px',
+                  },
+                }} />
             <p className='text-orange-600'>{each.instructorName}</p>
           <Link to='/instructors' className='btn btn-primary btn-md mx-auto'>See Instructors</Link>
             </div>

@@ -16,7 +16,7 @@ const Payment = () => {
     useEffect(() => {
         const pickedClassLoad = async () => {
           try {
-            const res = await axios.get(`http://localhost:5000/picked/${paymentClassID.id}`);
+            const res = await axios.get(`https://golingo-server.vercel.app/picked/${paymentClassID.id}`);
             const data = res.data;
             setChosen(data[0]);
           } catch (error) {

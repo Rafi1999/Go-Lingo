@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
   const { logOut } = useContext(AuthContext);
 
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000', // Replace with your base URL
+    baseURL: 'https://golingo-server.vercel.app', 
   });
 
   useEffect(() => {

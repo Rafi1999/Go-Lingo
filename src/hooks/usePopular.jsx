@@ -6,7 +6,7 @@ const usePopular = () => {
     const [loading, setLoading] = useState(true);
     const [classes, setClasses] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/popular')
+        fetch('https://golingo-server.vercel.app/popular')
         .then(res=>res.json())
         .then(data=>{
             setClasses(data);
